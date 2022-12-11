@@ -1,0 +1,60 @@
+
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>vue form</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body dir="rtl">
+      <div id="forms">
+        <form id="msform">
+          <!-- fieldsets -->
+          <template v-if=!loginForm>
+            <fieldset id="createAccount">
+              <h2 class="fs-title">Create your account</h2>
+              <input type="text" placeholder="UserName" />
+              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Confirm Password" />
+              <input type="button" class="next action-button" value="Create" />
+              <input
+                type="button"
+                class="next action-button"
+                @click="loginForm=true"
+                value="login"
+                style="background-color: rgb(211, 86, 86)"
+              />
+            </fieldset>
+          </template>
+          <template v-else-if=loginForm>
+          <fieldset id="login">
+            <h2 class="fs-title">Login</h2>
+            <input type="text" placeholder="UserName" />
+            <input type="text" placeholder="Password" />
+            <input type="button" class="previous action-button" value="Login" />
+            <input
+              style="background-color: rgb(211, 86, 86)"
+              type="button"
+             @click="loginForm=false"
+              class="action-button"
+              value="Create Acc"
+            />
+          </fieldset>
+        </template>
+        </form>
+      </div>
+  
+      <script type="module">
+          import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+   
+      createApp({
+          data() {
+            return {
+              loginForm: true
+            }
+          },
+        }).mount('#forms')
+      </script>
+    </body>
+  </html>
+  
