@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
+  <body dir="rtl">
+    <div id="app">
+      <input type="text" placeholder="add new todo" v-model="newTodo" />
+      <button @click="addTodo()">add to do</button>
+      <ul>
+        <li v-for="(todo,index) in todos">
+          {{index+1}}-{{todo}}
+          <button @click="removeTodo(index)">remove Todo</button>
+        </li>
+      </ul>
+    </div>
+    <script type="module">
+      import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+      createApp({
+        data() {
+          return {
+            newTodo: "",
+            todos: ["lernng vuejs", "learning react", "go shopping"],
+          };
+        },
+        methods: {
+          addTodo: function () {
+            if (this.newTodo === "") {
+              alert("please full the to do");
+            } else {
+              this.todos.push(this.newTodo);
+              this.newTodo = "";
+            }
+          },
+          removeTodo: function (index) {
+            this.todos.splice(index, 1);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
