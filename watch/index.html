@@ -1,0 +1,36 @@
+
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>watch</title>
+    </head>
+    <body>
+        <div id="app">
+        GB:<input type="text" v-model="GB">
+        MB:<input type="text" v-model="MB">
+    </div>
+  
+      <script type="module">
+          import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+   
+      createApp({
+          data() {
+            return {
+              GB:null,
+              MB:null,
+            }
+          },
+          watch:{
+                GB:function(val){
+                 this.MB=val*1024
+                },
+                MB:function(val){
+                this.GB=val/1024
+                }
+            }
+        }).mount('#app')
+      </script>
+    </body>
+  </html>
+  
