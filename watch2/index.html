@@ -1,0 +1,36 @@
+
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>watch2</title>
+    </head>
+    <body>
+        <div id="app">
+        message<input type="text" v-model="message"/>
+        <p v-if="isTyping">typing...</p>
+    </div>
+  
+      <script type="module">
+          import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+   
+      createApp({
+          data() {
+            return {
+             message:'',
+             isTyping:false,
+            }
+          },
+          watch:{
+              message:function(){
+                this.isTyping=true
+                setTimeout(()=>{
+                    this.isTyping=false
+                },1500)
+              }
+            }
+        }).mount('#app')
+      </script>
+    </body>
+  </html>
+  
